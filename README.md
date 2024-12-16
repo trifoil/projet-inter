@@ -6,7 +6,7 @@ Projet inter 2024
 # To-Do List
 
 ## Tasks
-- [*] Création du GIT
+- [x] Création du GIT
 - [ ] Diagrammes de cas d'utilisation
 - [ ] Diagrammes de classe
 - [ ] Diagrammes de séquence
