@@ -35,7 +35,7 @@ prompt() {
 }
 
 set_dns_server() {
-    read -p "Enter the DNS server IP: " DNS_SERVER_IP
+    DNS_SERVER_IP=$(prompt "Enter the DNS server IP" "192.168.10.2")
     echo "nameserver $DNS_SERVER_IP" > /etc/resolv.conf
     echo "DNS server set to $DNS_SERVER_IP"
 }
@@ -191,9 +191,15 @@ EOL
 }
 
 setup_all(){
-    read -p "Enter the domain name (e.g., transport.smartcity.lan): " DOMAIN_NAME
+    DOMAIN_NAME=$(prompt "Enter the domain name" "transport.smartcity.lan")
     set_dns_server
+    echo "Press any key to continue..."
+    read -n 1 -s key
+
     basic_root_website $DOMAIN_NAME
+    echo "Press any key to continue..."
+    read -n 1 -s key
+
     basic_db $DOMAIN_NAME
     echo "Press any key to continue..."
     read -n 1 -s key
