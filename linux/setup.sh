@@ -188,6 +188,8 @@ setup_all(){
     set_dns_server
     basic_root_website $DOMAIN_NAME
     basic_db $DOMAIN_NAME
+    echo "Press any key to continue..."
+    read -n 1 -s key
 }
 
 main() {
