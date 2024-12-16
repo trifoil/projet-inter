@@ -2,9 +2,9 @@
 
 clear
 
-RED='\033[0;31m' 
-BLUE='\e[38;5;33m' 
-NC='\033[0m' 
+RED='\033[0;31m'
+BLUE='\e[38;5;33m'
+NC='\033[0m'
 
 updatedb
 systemctl enable --now cockpit.socket
@@ -27,7 +27,11 @@ echo ""
     echo ""
 }
 
-
+set_dns_server() {
+    read -p "Enter the DNS server IP: " DNS_SERVER_IP
+    echo "nameserver $DNS_SERVER_IP" > /etc/resolv.conf
+    echo "DNS server set to $DNS_SERVER_IP"
+}
 
 basic_root_website(){
     DOMAIN_NAME=$1
@@ -110,6 +114,13 @@ y
 y
 EOF
 
+    # Create admin user and grant all privileges
+    mysql -u root <<EOF
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Test123*';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+EOF
+
     firewall-cmd --add-service=mysql --permanent
     firewall-cmd --reload
     ln -s /usr/share/phpmyadmin /mnt/raid5_web/root/phpmyadmin
@@ -117,7 +128,7 @@ EOF
 
 cat <<EOL > $conf_file
 # phpMyAdmin - Web based MySQL browser written in php
-# 
+#
 # Allows only localhost by default
 #
 # But allowing phpMyAdmin to anyone other than localhost should be considered
@@ -172,6 +183,12 @@ EOL
     systemctl restart httpd
 }
 
+setup_all(){
+    read -p "Enter the domain name (e.g., transport.smartcity.lan): " DOMAIN_NAME
+    set_dns_server
+    basic_root_website $DOMAIN_NAME
+    basic_db $DOMAIN_NAME
+}
 
 main() {
     while true; do
