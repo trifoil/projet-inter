@@ -3,9 +3,12 @@ d# Linux
 Use : 
 
 ```
+sudo rm -rf projet-inter
 git clone -b linux https://github.com/trifoil/projet-inter.git
 cd projet-inter/linux
 sudo sh setup.sh
+cd .. 
+cd ..
 ```
 
 ## Plan de partitionnement 
