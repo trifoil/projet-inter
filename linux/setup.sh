@@ -194,7 +194,7 @@ setup_all(){
 
 main() {
     while true; do
-        clear
+        # clear
         display_menu
         read -p "Enter your choice: " choice
         case $choice in
