@@ -1,6 +1,6 @@
 # Linux
 
-Use : 
+Utilisation : 
 
 ```
 sudo rm -rf projet-inter
@@ -10,13 +10,6 @@ cd linux
 sudo sh setup.sh
 cd .. 
 cd ..
-```
-
-
-```
-git clone https://github.com/trifoil/projet-inter.git
-cd projet-inter/linux
-sudo sh setup.sh
 ```
 
 ## Plan de partitionnement 
@@ -49,21 +42,3 @@ sudo sh setup.sh
 
 ```transport.smartcity.lan```
 
-
-## Fix DB
-
-
-```
-mysql -u root
-```
-Commande SQL:
-```
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Test123*';
-GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'localhost';
-FLUSH PRIVILEGES;
-```
-Commande : 
-```
-exit
-service mysql restart
-```
