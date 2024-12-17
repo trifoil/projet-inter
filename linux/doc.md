@@ -5,7 +5,8 @@ Use :
 ```
 sudo rm -rf projet-inter
 git clone -b linux https://github.com/trifoil/projet-inter.git
-cd projet-inter/linux
+cd projet-inter
+cd linux
 sudo sh setup.sh
 cd .. 
 cd ..
