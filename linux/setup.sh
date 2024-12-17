@@ -94,11 +94,11 @@ service mysql restart
 
 # Create a PHP test file
 touch /var/www/html/info.php
-cat <<EOF > /var/www/html/info.php
+cat <<EOL > /var/www/html/info.php
 <?php
 echo "bonjour";
 ?>
-EOF
+EOL
 
 # Configure Apache to listen on all network interfaces
 sudo sed -i 's/Listen 80/Listen 0.0.0.0:80/' /etc/httpd/conf/httpd.conf
