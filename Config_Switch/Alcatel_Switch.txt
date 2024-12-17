@@ -1,0 +1,25 @@
+Commandes
+#Nommer le switch
+system name Linux_Serv_SmartCity
+#Création VLAN 
+vlan 10 name "Transport"
+ip interface vlan-10 address 192.168.10.254 vlan 10
+vlan 10 port default 1/0-5 
+
+vlan 20 name "Energie"
+ip interface vlan-20 address 192.168.20.254 vlan 20
+vlan 20 port default 1/6-10
+
+vlan 30 name "Sécurité"
+ip interface vlan-30 address 192.168.30.254 vlan 30
+vlan 30 port default 1/11-15
+
+vlan 40 name "Eau"
+ip interface vlan-40 address 192.168.40.254 vlan 40
+vlan 40 port default 1/16-20
+
+vlan 100 name "commun"
+ip interface vlan-100 address 192.168.100.254 vlan 100
+vlan 100 port default 1/21-24
+ssh enable
+
