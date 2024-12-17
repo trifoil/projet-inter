@@ -40,6 +40,21 @@ EOL
     # SELINUX RAHHHHHHHHHHH
     /sbin/restorecon -R -v /var/www/html/    setsebool -P samba_export_all_rw 1
 
+setsebool -P httpd_can_network_connect 1
+
+setsebool -P httpd_graceful_shutdown 1
+
+setsebool -P httpd_can_network_relay 1
+
+setsebool -P nis_enabled 1
+
+setsebool -P samba_export_all_ro 1
+
+setsebool -P samba_export_all_rw 1
+
+ausearch -c 'php-fpm' --raw | audit2allow -M my-phpfpm
+semodule -X 300 -i my-phpfpm.pp
+
     systemctl restart smb
     systemctl restart nmb
 
