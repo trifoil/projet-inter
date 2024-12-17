@@ -2,11 +2,30 @@
 
 clear
 
+RED='\033[0;31m'
+BLUE='\e[38;5;33m'
+NC='\033[0m'
 
 updatedb
+systemctl enable --now cockpit.socket
+firewall-cmd --permanent --zone=public --add-service=cockpit
+firewall-cmd --reload
 dnf -y install nfs-utils samba bind chrony fail2ban vsftpd rsync clamav clamd clamav-update bind-utils httpd php php-mysqlnd mariadb-server phpmyadmin mod_ssl
 
+clear
 
+display_menu() {
+echo ""
+    echo "|----------------------------------------------------------------------|"
+    echo -e "|                 ${BLUE}Welcome to the server assistant ${NC}                     |"
+    echo "|              Please select the tool you want to use                  |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| 0. Setup                                                             |"
+    echo "|----------------------------------------------------------------------|"
+    echo "| q. Quit                                                              |"
+    echo "|----------------------------------------------------------------------|"
+    echo ""
+}
 
 prompt() {
   local prompt_message=$1
@@ -15,11 +34,11 @@ prompt() {
   echo "${input:-$default_value}"
 }
 
-
-DNS_SERVER_IP=$(prompt "Enter the DNS server IP" "192.168.10.2")
-echo "nameserver $DNS_SERVER_IP" > /etc/resolv.conf
-echo "DNS server set to $DNS_SERVER_IP"
-
+set_dns_server() {
+    DNS_SERVER_IP=$(prompt "Enter the DNS server IP" "192.168.10.2")
+    echo "nameserver $DNS_SERVER_IP" > /etc/resolv.conf
+    echo "DNS server set to $DNS_SERVER_IP"
+}
 
 basic_root_website(){
     DOMAIN_NAME=$1

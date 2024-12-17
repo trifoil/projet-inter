@@ -13,12 +13,29 @@ cd ..
 
 ## Plan de partitionnement 
 
-* /home : 4GB
-* /server : 10GB
-* / : 20GB
-* /boot/efi : 600MB
-* /boot : 1024MB
-* swap : 8GB
+- **`/boot/efi`**:
+  - **Size**: 600 MB
+  - **Format**: EFI system partition
+
+- **`/boot`**:
+  - **Size**: 1024 MB
+  - **Format**: ext4
+
+- **`/` (root)**:
+  - **Size**: 20 GB
+  - **Format**: ext4
+
+- **`/home`**:
+  - **Size**: 4 GB
+  - **Format**: ext4
+
+- **`/server` (server data)**:
+  - **Size**: 10 GB
+  - **Format**: xfs
+
+- **`swap`**:
+  - **Size**: 8 GB
+  - **Format**: swap
 
 ## Implémentation DNS 
 
