@@ -1,7 +1,6 @@
 
     echo "Installing Samba share"
-    sudo mkdir -p /var/www/html/info.php
-
+    sudo mkdir -p /var/www/html/
     
     dnf update -y
     dnf -y install samba samba-client
@@ -11,12 +10,12 @@
     firewall-cmd --permanent --add-service=samba
     firewall-cmd --reload
 
-    chown -R nobody:nobody /var/www/html/info.php
-    chmod -R 0777 /var/www/html/info.php
+    chown -R nobody:nobody /var/www/html/
+    chmod -R 0777 /var/www/html/
     
     cat <<EOL > /etc/samba/smb.unauth.conf
 [unauth_share]
-   path = /var/www/html/info.php/
+   path = /var/www/html/
    browsable = yes
    writable = yes
    guest ok = yes
@@ -39,8 +38,7 @@ EOL
     fi
 
     # SELINUX RAHHHHHHHHHHH
-    /sbin/restorecon -R -v /var/www/html/info.php
-    setsebool -P samba_export_all_rw 1
+    /sbin/restorecon -R -v /var/www/html/    setsebool -P samba_export_all_rw 1
 
     systemctl restart smb
     systemctl restart nmb
