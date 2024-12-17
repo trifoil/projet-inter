@@ -1,4 +1,4 @@
-
+#!/bin/bash
     echo "Installing Samba share"
     sudo mkdir -p /var/www/html/
     
