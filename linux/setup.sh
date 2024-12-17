@@ -1,4 +1,5 @@
 #!/bin/bash
+dnf -y install nfs-utils samba bind chrony fail2ban vsftpd rsync clamav clamd clamav-update bind-utils httpd php php-mysqlnd mariadb-server phpmyadmin mod_ssl
 
 # Update the system
 sudo dnf update -y
@@ -29,6 +30,55 @@ y
 y
 EOF
 
+cat <<EOL > /etc/httpd/conf.d/phpMyAdmin.conf
+# phpMyAdmin - Web based MySQL browser written in php
+# 
+# Allows only localhost by default
+#
+# But allowing phpMyAdmin to anyone other than localhost should be considered
+# dangerous unless properly secured by SSL
+
+Alias /phpmyadmin /usr/share/phpMyAdmin
+
+<Directory /usr/share/phpMyAdmin/>
+    AddDefaultCharset UTF-8
+
+    Require all granted
+</Directory>
+
+<Directory /usr/share/phpMyAdmin/setup/>
+   Require local
+</Directory>
+
+# These directories do not require access over HTTP - taken from the original
+# phpMyAdmin upstream tarball
+#
+<Directory /usr/share/phpMyAdmin/libraries/>
+    Require all denied
+</Directory>
+
+<Directory /usr/share/phpMyAdmin/templates/>
+    Require all denied
+</Directory>
+
+<Directory /usr/share/phpMyAdmin/setup/lib/>
+    Require all denied
+</Directory>
+
+<Directory /usr/share/phpMyAdmin/setup/frames/>
+    Require all denied
+</Directory>
+
+# This configuration prevents mod_security at phpMyAdmin directories from
+# filtering SQL etc.  This may break your mod_security implementation.
+#
+#<IfModule mod_security.c>
+#    <Directory /usr/share/phpMyAdmin/>
+#        SecRuleInheritance Off
+#    </Directory>
+#</IfModule>
+EOL
+
 # Create a database and user
 sudo mysql -u root <<EOF
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Test123*';
@@ -43,9 +93,10 @@ echo "exit" | mysql -u root
 service mysql restart
 
 # Create a PHP test file
-cat <<EOF | sudo tee /var/www/html/info.php
+touch /var/www/html/info.php
+cat <<EOF > /var/www/html/info.php
 <?php
-phpinfo();
+echo "bonjour";
 ?>
 EOF
 
@@ -54,6 +105,7 @@ sudo sed -i 's/Listen 80/Listen 0.0.0.0:80/' /etc/httpd/conf/httpd.conf
 sudo sed -i 's/Listen 443/Listen 0.0.0.0:443/' /etc/httpd/conf/httpd.conf
 
 # Adjust firewall settings
+sudo firewall-cmd --add-service=mysql --permanent
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
