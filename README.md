@@ -14,17 +14,17 @@ Projet inter 2024
 - [ ] Plan réseau
 - [ ] Plan de sauvegarde
 - [ ] Plan de testing
-- [ ] Configuration switch
-- [ ] Configuration Vlans
+- [x] Configuration switch
+- [x] Configuration Vlans
 - [ ] Sécurité des ports switch
-- [ ] Configuration de Linux
+- [x] Configuration de Linux
 - [ ] Création de la DB
 - [ ] Création du site web html/css/js
 - [ ] Configuration du WinServ
 - [ ] Configuration DHCP
 - [ ] Configuration Active Directory
 - [ ] Configuration DNS
-- [ ] Configuration de php sur le site
+- [x] Configuration de php sur le site
 - [ ] Test unitaire de la db
 - [ ] Développement de l'app commu
 - [ ] Test d'intégration
