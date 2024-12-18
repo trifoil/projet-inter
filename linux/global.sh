@@ -1,11 +1,14 @@
 #!/bin/bash
 
-dnf update -y
+# Update the system
+sudo dnf update -y
 
-
+# Install MariaDB server and client
 sudo dnf install mariadb-server mariadb -y
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
+
+# Secure MariaDB installation
 sudo mysql_secure_installation <<EOF
 y
 rootpassword
@@ -16,14 +19,22 @@ y
 y
 EOF
 
+# Install Python and Pip
 sudo dnf install python3 python3-pip -y
+
+# Install Django
 pip3 install django
+
+# Create Django project
 django-admin startproject myproject
 cd myproject
+
+# Install MariaDB development packages
 sudo dnf install mariadb-devel -y
+sudo dnf install python3-devel -y
+
+# Install mysqlclient
 pip3 install mysqlclient
-
-
 
 # Variables
 PROJECT_NAME="myproject"
@@ -33,21 +44,13 @@ DB_PASSWORD="Test123*"
 DB_HOST="localhost"
 DB_PORT="3306"
 
-# Create the Django project if it doesn't exist
-if [ ! -d "$PROJECT_NAME" ]; then
-    django-admin startproject $PROJECT_NAME
-    cd $PROJECT_NAME
-else
-    cd $PROJECT_NAME
-fi
-
 # Backup the original settings.py file
-cp settings.py settings.py.bak
+cp $PROJECT_NAME/settings.py $PROJECT_NAME/settings.py.bak
 
 # Edit the settings.py file
-cat <<EOL > settings.py
+cat <<EOL > $PROJECT_NAME/settings.py
 # Original settings.py content
-$(cat settings.py.bak)
+$(cat $PROJECT_NAME/settings.py.bak)
 
 # Database configuration
 DATABASES = {
@@ -63,32 +66,25 @@ DATABASES = {
 EOL
 
 # Remove the backup file
-rm settings.py.bak
+rm $PROJECT_NAME/settings.py.bak
 
 echo "Database configuration updated successfully."
 
-# Edit the myproject/settings.py file to configure the database settings:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'dbcommune',
-#         'USER': 'admin',
-#         'PASSWORD': 'Test123*',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-
-sudo mysql -u root <<EOF
-CREATE DATABASE dbcommune;
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Test123*';
-GRANT ALL PRIVILEGES ON dbcommune.* TO 'admin'@'localhost';
+# Create the database and user in MariaDB
+sudo mysql -u root -prootpassword <<EOF
+CREATE DATABASE $DB_NAME;
+CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';
+GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
+# Run Django migrations
 python3 manage.py migrate
+
+# Create a superuser
 python3 manage.py createsuperuser
+
+# Run the development server
 python3 manage.py runserver 0.0.0.0:8000
 
-# http://localhost:8000
+echo "Django development server is running at http://localhost:8000"
