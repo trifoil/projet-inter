@@ -12,6 +12,30 @@ cd ..
 cd ..
 ```
 
+pour le partage :
+
+```
+sudo rm -rf projet-inter
+git clone -b linux https://github.com/trifoil/projet-inter.git
+cd projet-inter
+cd linux
+sudo sh samba.sh
+cd .. 
+cd ..
+```
+
+pour le global :
+
+```
+sudo rm -rf projet-inter
+git clone -b linux https://github.com/trifoil/projet-inter.git
+cd projet-inter
+cd linux
+sudo sh global.sh
+cd .. 
+cd ..
+```
+
 ## Plan de partitionnement 
 
 - **`/boot/efi`**:
