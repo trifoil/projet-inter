@@ -56,13 +56,18 @@ while ( $cat=$reqCat->fetch() ) {
                     $reqCat = $bd->prepare('SELECT * FROM parking WHERE StateUp = 1');
                     $reqCat->execute();
                     while ( $cat=$reqCat->fetch() ) {
-                        echo '<li>',$cat['Location'],' : ', $cat['AvailablePlaces'], 'places prises sur',$cat['TotalPlace'],  '<button>+</button></li>';}
+                        echo '<li>',$cat['Location'],' : ', $cat['AvailablePlaces'], 'places restantes sur',$cat['TotalPlace'],  '<button>+</button></li>';}
 
                     
                     ?>
-                    <li>Rue X numéro X: X places prises sur X. <button>+</button></li>
-                    <li>Rue X numéro X: X places prises sur X. <button>+</button></li>
-                    <li>Rue X numéro X: X places prises sur X. <button>+</button></li>
+                    <h3>The different car parks in SmartCity Disable:</h3>
+                <ul>
+                    <?php 
+                    $reqCat = $bd->prepare('SELECT * FROM parking WHERE StateUp = 0');
+                    $reqCat->execute();
+                    while ( $cat=$reqCat->fetch() ) {
+                        echo '<li>',$cat['Location'],'</li>';}
+                    ?>
                 </ul>
             </div>
         </div>
