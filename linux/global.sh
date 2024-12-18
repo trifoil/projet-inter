@@ -32,6 +32,7 @@ cd myproject
 # Install MariaDB development packages
 sudo dnf install mariadb-devel -y
 sudo dnf install python3-devel -y
+pip install mysql-connector-python
 
 # Install mysqlclient
 pip3 install mysqlclient
