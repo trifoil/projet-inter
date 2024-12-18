@@ -33,6 +33,7 @@ cd myproject
 sudo dnf install mariadb-devel -y
 sudo dnf install python3-devel -y
 pip install mysql-connector-python
+sudo dnf install gcc gcc-c++ python3-devel mysql-devel redhat-rpm-config libffi-devel openssl-devel --skip-broken
 
 # Install mysqlclient
 pip3 install mysqlclient
