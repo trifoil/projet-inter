@@ -1,3 +1,7 @@
+<?php 
+include ('../src/var.php')
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,10 +50,10 @@
                         <h2>Here is all data of parking </h2>
                         <p>Here you will find all information about transportation </p>
                         <ul>
-                            <li>Total of parking :</li>
-                            <li>Total of place : </li>
-                            <li>Enable parking :</li>
-                            <li>Disable parking :</li>
+                            <li>Total of parking : <?php echo $nbr_place;?></li> 
+                            <li>Total of place : <?php echo $nbr_place_prise;?> </li>
+                            <li>Enable parking : <?php echo $nbr_parking_enable;?></li>
+                            <li>Disable parking : <?php echo $nbr_parking_disable;?></li>
                         </ul>
                     </div>
                 </div>

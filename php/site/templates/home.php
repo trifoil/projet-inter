@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+   
     <div class="container">
         <div class="sidebar">
             <h1>Smartcity</h1>
