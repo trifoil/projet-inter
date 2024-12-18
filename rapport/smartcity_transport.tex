@@ -1,0 +1,321 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \includegraphics[width=0.5\textwidth]{logo_heh.png}\par\vspace{1cm}
+    {\scshape\LARGE Haute École en Hainaut \par}
+    \vspace{1cm}
+    {\huge\bfseries Projet Interdisciplinaire : SmartCity \par}
+    \vspace{2cm}
+    {\Large\itshape Groupe 9 \par}
+    \vspace{1cm}
+    {\Large\itshape Noah Debay, De Coster Koryan, Di Letto Matteo, Florian Olivier, Augustin Vangeebergen \par}
+    \vfill
+    {\large Bachelier en Informatique - Orientation réseaux \& télécommunications - Bloc 2 \par}
+    \vfill
+    {\large Décembre 2024 \par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\chapter{Introduction}
+Ce rapport présente le projet interdisciplinaire réalisé dans le cadre du Bachelier en Informatique, orientation réseaux \& télécommunications, bloc 2. Le projet vise à simuler la gestion d'une ville intelligente en intégrant des aspects d'infrastructure réseau, de développement web, et de gestion collaborative.
+
+\chapter{Description du Projet}
+Le projet interdisciplinaire a pour objectif de vous immerger dans une simulation professionnelle qui allie infrastructure réseau, systèmes informatiques, bases de données, développement web, et gestion collaborative. Chaque groupe représentera une entité indépendante (par exemple, un hôpital) avec des responsabilités propres, tout en collaborant avec les autres pour contribuer à un système centralisé interconnecté.
+
+\section{Comportement}
+Durant cette semaine de projet, vous devrez faire preuve de professionnalisme. Et donc trouver une méthodologie de travail de groupe adéquate, une cohésion, un échange professionnel entre vous et les professeurs servant d'expert ou ceux servant de client. L'interprétation des informations sera différente selon l'un et l'autre. Il sera donc important d'employer un vocabulaire adéquat en fonction.
+
+\section{Groupe}
+L'élaboration du projet se fera comme convenu au départ par groupe de 5 étudiants maximum. Chaque groupe devra comporter plusieurs profils tel que :
+\begin{itemize}
+    \item 1 Chef d'équipe : Il sera la personne ressource pour le client et sera donc l'UNIQUE référent pour celui-ci.
+    \item 2 développeurs : Ces personnes auront une spécificité beaucoup plus orienté développement.
+    \item 2 gestionnaires réseau : Ces personnes auront plusieurs missions d'aider les développeurs en testant le code et de gérer l'infrastructure réseau.
+\end{itemize}
+
+\section{Autonomie}
+Durant cette semaine de projet, vous devrez faire preuve d'autonomie, ce critère entrera dans votre évaluation.
+
+\section{Évaluation}
+L'évaluation sera réalisée à différents niveaux :
+\begin{itemize}
+    \item Présentation du produit final aux clients.
+    \item Le code.
+    \item Configuration réseau et infrastructure.
+    \item La rédaction du rapport.
+    \item La documentation demandée dans le cahier de charges.
+\end{itemize}
+
+\chapter{Objectifs Généraux}
+Le projet vise à développer une simulation de gestion pour une ville intelligente. Chaque groupe représentera un département crucial (transport, énergie, sécurité, eau) et sera responsable de gérer les données locales tout en contribuant à une base centrale pour fournir des services partagés et un tableau de bord global.
+
+\chapter{Infrastructure Réseau \& Systèmes}
+\section{Configuration Réseau}
+Chaque classe disposera d'un switch configuré avec les VLAN suivants :
+\begin{itemize}
+    \item VLAN 10, 20, 30, 40 : Attribués aux groupes 1 à 4.
+    \item VLAN 100 : VLAN commun regroupant les services partagés.
+\end{itemize}
+
+\section{Serveurs}
+Chaque groupe disposera de serveurs locaux et collaborera avec un serveur commun.
+\begin{itemize}
+    \item Serveur Windows Local (par VLAN)
+    \item Serveur Windows commun (VLAN 100)
+    \item Serveur Linux Local (par VLAN)
+    \item Serveur Linux Commun (VLAN 100)
+\end{itemize}
+
+\chapter{Développement des Applications}
+\section{Applications Locales (PHP)}
+Chaque groupe doit développer une interface CRUD pour gérer les données locales et assurer la synchronisation de certaines données locales avec la base de données centrale.
+
+\section{Applications Globales (Python ou PHP)}
+Cette application doit consolider les données, gérer les alertes, fournir un tableau de bord général, et assurer la sécurité des données.
+
+\section{Bonnes Pratiques}
+Cette application doit répondre aux normes de bonnes pratiques vues en cours, être documentée, sécurisée, et ergonomique.
+
+\chapter{Analyse}
+Chaque groupe doit produire les diagrammes UML suivants :
+\begin{itemize}
+    \item Diagrammes de cas d'utilisation.
+    \item Diagrammes de classes.
+    \item Diagrammes de séquence.
+\end{itemize}
+
+\chapter{Notions de Sécurité de l'AD et Journalisation de la Base de Données}
+\section{Authentification}
+Tous les utilisateurs doivent s'authentifier via l'Active Directory (local ou central) avant d'accéder aux applications.
+
+\section{Contrôle d'Accès}
+Permissions basées sur les groupes AD. Validation des actions critiques selon le rôle défini dans AD.
+
+\section{Traçabilité}
+Journaux de connexion enregistrés sur le serveur AD pour chaque utilisateur. Suivi des modifications dans les bases de données via triggers.
+
+\chapter{Documentation Technique}
+Chaque groupe doit livrer une documentation complète comprenant :
+\begin{itemize}
+    \item Plans réseau.
+    \item Maquettes.
+    \item Scripts de configuration.
+    \item Rapports de tests.
+\end{itemize}
+
+\chapter{Planning Suggéré}
+\section{Jour 1 : Analyse et Planification}
+Étude des besoins spécifiques et communs. Création des diagrammes UML, modélisation de la base de données et des maquettes.
+
+\section{Jour 2 : Configuration Réseau et Serveurs}
+Configuration des VLAN. Installation et configuration des serveurs.
+
+\section{Jour 3 : Développement Local (PHP)}
+Implémentation des fonctionnalités CRUD locales. Tests unitaires sur les bases de données locales.
+
+\section{Jour 4 : Application Commune (Python ou PHP)}
+Développement des fonctionnalités globales. Tests d'intégration entre bases de données locales et centrale.
+
+\section{Jour 5 : Validation et Présentation}
+Validation réseau, serveurs, et applications. Présentation des résultats par chaque groupe.
+
+\chapter{Responsabilités par Département}
+\section{Transport (VLAN 10)}
+Gestion des parkings intelligents, suivi du trafic et gestion des feux connectés, rapport des temps d'attente.
+
+\section{Énergie (VLAN 20)}
+Suivi de la consommation énergétique des panneaux solaires, gestion des alertes de surcharge, génération de rapports énergétiques.
+
+\section{Sécurité (VLAN 30)}
+Vidéosurveillance connectée, alerte anti-intrusion avec capteurs, suivi en temps réel des caméras.
+
+\section{Eau (VLAN 40)}
+Gestion des capteurs de qualité d'eau potable, détection des fuites d'eau, génération de rapports sur la consommation.
+
+\chapter{Cahier des Charges par Département}
+Chaque département est responsable de ses données locales et de leur synchronisation avec la base de données centrale. Les applications locales doivent inclure une interface simple, ergonomique et intuitive. Les permissions d'accès doivent être gérées via Active Directory et des validations côté serveur.
+
+\chapter{Daily Scrum}
+
+\section{Jour 1 : 16 décembre 2024}
+
+\subsection{À Faire Aujourd'hui}
+\begin{itemize}
+    \item Étude des besoins spécifiques du département "Transport" et communs.
+    \item Création des diagrammes UML de cas d'utilisation pour les fonctionnalités à développer (ex. : détection de place libre, rapport des temps d'attente).
+    \item Modélisation de la base de données et des maquettes.
+    \item Configurer le VLAN pour le département Transport.
+    \item Établir les exigences pour l'infrastructure réseau (serveurs nécessaires, configuration IP).
+    \item Documenter les besoins en matière de sécurité et d'accès pour le réseau.
+\end{itemize}
+
+\subsection{Fait Aujourd'hui}
+\begin{itemize}
+    \item Modélisation de la base de données globale et locale (Matteo)
+    \item Découverte de mon rôle de chef d’équipe, évaluation des compétences, création de dossiers pour le suivi, début de l’UML, discussion sur la maquette du site web (Florian)
+    \item Modélisation de la base de données locale, tests réseau, résolution de problèmes avec Noah, début de l’élaboration des layouts (Koryan)
+    \item Création du repo git, branches pour le développement, plan de partitionnement des serveurs Linux, installation initiale des VM (Augustin)
+    \item Compréhension des consignes, configuration du switch, configurations des VLANs et du SSH (Noah)
+\end{itemize}
+
+\subsection{À Faire Demain}
+\begin{itemize}
+    \item Commencer à développer l'application locale en PHP pour la gestion des parkings intelligents.
+    \item Créer une interface utilisateur simple et ergonomique (HTML/CSS/JavaScript).
+    \item Installer et configurer les serveurs nécessaires (DNS, DHCP, Web).
+    \item Configurer les permissions d'accès via Active Directory pour le groupe Transport.
+    \item Tester la connectivité réseau et s'assurer que le VLAN est opérationnel.
+\end{itemize}
+
+\subsection{Obstacles}
+Aucun obstacle signalé pour le moment.
+
+\subsection{Notes}
+\begin{itemize}
+    \item Cette journée a été consacrée à la modélisation de la base de données globale et locale.
+    \item Florian a réalisé une évaluation des compétences pour choisir le rôle de chacun et a créé différents dossiers pour assurer un suivi.
+    \item Koryan a travaillé sur la modélisation de la base de données locale et a débuté l’élaboration des layouts de l’application locale.
+    \item Augustin a créé le repo git et a installé les VM.
+    \item Noah a configuré le switch et les VLANs.
+\end{itemize}
+
+\section{Jour 2 : 17 décembre 2024}
+
+\subsection{À Faire Aujourd'hui}
+\begin{itemize}
+    \item Commencer à développer l'application locale en PHP pour la gestion des parkings intelligents.
+    \item Créer une interface utilisateur simple et ergonomique (HTML/CSS/JavaScript).
+    \item Installer et configurer les serveurs nécessaires (DNS, DHCP, Web).
+    \item Configurer les permissions d'accès via Active Directory pour le groupe Transport.
+    \item Tester la connectivité réseau et s'assurer que le VLAN est opérationnel.
+\end{itemize}
+
+\subsection{Fait Aujourd'hui}
+\begin{itemize}
+    \item Échange avec les experts, mise en place et apprentissage de Django, activation de l'infrastructure Django, création du dépôt GitHub commun de la Smartcity avec Kilian (Florian)
+    \item Fin de la conception des layouts (Koryan)
+    \item Configuration des VLANs du switch, debug de la connectivité, configuration du site web HTML/CSS, construction de la DB sur phpMyAdmin, commencement de quelques requêtes PHP (Noah)
+\end{itemize}
+
+\subsection{À Faire Demain}
+\begin{itemize}
+    \item Implémenter les fonctionnalités CRUD (Créer, Lire, Mettre à jour, Supprimer) pour la gestion des parkings.
+    \item Développer les fonctionnalités de suivi du trafic et de gestion des feux connectés.
+    \item Effectuer des tests unitaires sur les fonctionnalités développées.
+    \item Assurer le bon fonctionnement des serveurs et de la base de données.
+    \item Tester la synchronisation des données entre l'application locale et la base de données centrale.
+\end{itemize}
+
+\subsection{Obstacles}
+Aucun obstacle signalé pour le moment.
+
+\subsection{Notes}
+\begin{itemize}
+    \item Florian a échangé avec les experts et a mis en place Django.
+    \item Koryan a terminé la conception des layouts.
+    \item Noah a configuré les VLANs et a commencé la configuration du site web.
+\end{itemize}
+
+\section{Jour 3 : 18 décembre 2024}
+
+\subsection{À Faire Aujourd'hui}
+\begin{itemize}
+    \item Implémenter les fonctionnalités CRUD (Créer, Lire, Mettre à jour, Supprimer) pour la gestion des parkings.
+    \item Développer les fonctionnalités de suivi du trafic et de gestion des feux connectés.
+    \item Effectuer des tests unitaires sur les fonctionnalités développées.
+    \item Assurer le bon fonctionnement des serveurs et de la base de données.
+    \item Tester la synchronisation des données entre l'application locale et la base de données centrale.
+\end{itemize}
+
+\subsection{Fait Aujourd'hui}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\subsection{À Faire Demain}
+\begin{itemize}
+    \item Intégrer les fonctionnalités développées avec l'application globale (partage des données avec d'autres départements).
+    \item Développer des rapports sur les temps d'attente et la gestion des parkings.
+    \item Vérifier l'intégration des systèmes et s'assurer que les données circulent correctement entre les applications locales et la base de données centrale.
+    \item Mettre en place des mesures de sécurité pour protéger les données de transport.
+\end{itemize}
+
+\subsection{Obstacles}
+Aucun obstacle signalé pour le moment.
+
+\subsection{Notes}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\section{Jour 4 : 19 décembre 2024}
+
+\subsection{À Faire Aujourd'hui}
+\begin{itemize}
+    \item Intégrer les fonctionnalités développées avec l'application globale (partage des données avec d'autres départements).
+    \item Développer des rapports sur les temps d'attente et la gestion des parkings.
+    \item Vérifier l'intégration des systèmes et s'assurer que les données circulent correctement entre les applications locales et la base de données centrale.
+    \item Mettre en place des mesures de sécurité pour protéger les données de transport.
+\end{itemize}
+
+\subsection{Fait Aujourd'hui}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\subsection{À Faire Demain}
+\begin{itemize}
+    \item Finaliser l'application locale et effectuer des tests d'intégration.
+    \item Préparer une présentation des résultats et des fonctionnalités développées.
+    \item Valider la configuration réseau et s'assurer que tout fonctionne comme prévu.
+    \item Préparer la documentation technique sur la configuration réseau et les serveurs.
+\end{itemize}
+
+\subsection{Obstacles}
+Aucun obstacle signalé pour le moment.
+
+\subsection{Notes}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\section{Jour 5 : 20 décembre 2024}
+
+\subsection{À Faire Aujourd'hui}
+\begin{itemize}
+    \item Finaliser l'application locale et effectuer des tests d'intégration.
+    \item Préparer une présentation des résultats et des fonctionnalités développées.
+    \item Valider la configuration réseau et s'assurer que tout fonctionne comme prévu.
+    \item Préparer la documentation technique sur la configuration réseau et les serveurs.
+\end{itemize}
+
+\subsection{Fait Aujourd'hui}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\subsection{À Faire Demain}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\subsection{Obstacles}
+Aucun obstacle signalé pour le moment.
+
+\subsection{Notes}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\end{document}
