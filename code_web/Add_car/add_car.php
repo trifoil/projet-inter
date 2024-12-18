@@ -1,13 +1,13 @@
 <?php
 if (isset($_POST['connexion']) ){
     $new_City = $_POST['City'] . ' ' . $_POST['Street'];   
-   $new_Places = (int )$_POST['places'];
-    //$_SESSION['pets'][$var] = $var;
-    //foreach($_SESSION['pets'] as $elem) echo $elem;
-    $modifBD = $bd->prepare('UPDATE parking
-    SET Location=:city, TotalPlace=:places , AvailablePlaces=:places');
+    $new_Places = (int )$_POST['places'];
+    $new_StateUp = (int)$_POST['StateUp'];
+    $modifBD = $bd->prepare('INSERT parking
+    SET Location=:city, TotalPlace=:places , AvailablePlaces=:places, StateUp=:StateUp');
     $modifBD->bindValue(':city', $new_City);
     $modifBD->bindValue(':places', $new_Places);
+    $modifBD->bindValue(':StaeUp', $new_StateUp);
     if ($modifBD->execute()) {
         header('Location: index.php');
         exit();
@@ -60,8 +60,6 @@ if (isset($_POST['connexion']) ){
                    while ( $cat=$reqCat->fetch() ) {
                        echo '<option value="',$cat['Name'],'">',$cat['Name'],'</option>';
                    }
-
-                   
                    ?>
                     
                 </select>
@@ -72,7 +70,15 @@ if (isset($_POST['connexion']) ){
 
                 <label for="places">Number of places</label>
                 <input type="number" id="places" name="places" placeholder="Enter a number">
-
+                
+                <div>
+                    <input type="radio" id="StateUp" name="enable" value="1" checked />
+                    <label for="StateUp">Enable</label>
+                </div>
+                <div>
+                    <input type="radio" id="StateDown" name="enable" value="0"/>
+                    <label for="StateDown">Disable</label>
+                </div>
                 <button type="submit" name="connexion" class="confirm-btn">Confirm</button>
             </form>
         </div>
