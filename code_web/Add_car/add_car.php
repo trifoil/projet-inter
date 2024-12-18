@@ -1,4 +1,5 @@
 <?php
+include '../loginbd.php';
 if (isset($_POST['connexion']) ){
     $new_City = $_POST['City'] . ' ' . $_POST['Street'];   
     $new_Places = (int )$_POST['places'];
@@ -51,17 +52,14 @@ if (isset($_POST['connexion']) ){
             <form class="carpark-form" method="POST" action="add_car.php">
                 
                    
-                <select name="City" id="">
+                <select name="City">
                 <?php 
-               
-               include '../loginbd.php';
                    $reqCat = $bd->prepare('SELECT * FROM city ');
                    $reqCat->execute();
                    while ( $cat=$reqCat->fetch() ) {
                        echo '<option value="',$cat['Name'],'">',$cat['Name'],'</option>';
                    }
                    ?>
-                    
                 </select>
                 
                 
@@ -69,7 +67,7 @@ if (isset($_POST['connexion']) ){
                 <input type="text" name="Street">
 
                 <label for="places">Number of places</label>
-                <input type="number" id="places" name="places" placeholder="Enter a number">
+                <input type="number" id="places" min='0' name="places" placeholder="Enter a number">
                 
                 <div>
                     <input type="radio" id="StateUp" name="enable" value="1" checked />
