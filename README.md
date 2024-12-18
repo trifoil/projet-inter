@@ -2,16 +2,12 @@
 Projet inter 2024
 
 ## To-do list
-
-# To-Do List
-
-## Tasks
 - [x] Création du GIT
 - [ ] Diagrammes de cas d'utilisation
 - [ ] Diagrammes de classe
 - [ ] Diagrammes de séquence
-- [ ] Modélisation des BD
-- [ ] Plan réseau
+- [x] Modélisation des BD
+- [x] Plan réseau
 - [ ] Plan de sauvegarde
 - [ ] Plan de testing
 - [x] Configuration switch
