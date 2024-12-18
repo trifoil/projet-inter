@@ -33,7 +33,7 @@
                     <p>🚙 There are currently <span>x</span> cars parked.</p>
                 </div>
                 <div class="status-box">
-                   <a href="file_php/add_car.php"> <button class="add-carpark">Add a car park in SmartCity!</button></a>
+                   <a href="templates/gestion.php"> <button class="add-carpark">Add a car park in SmartCity!</button></a>
                 </div>
             </div>
 
