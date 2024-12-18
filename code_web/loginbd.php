@@ -1,6 +1,6 @@
 <?php 
 date_default_timezone_set('Europe/Brussels');
-$hote='localhost';
+$hote='root';
 $nomBD='transport_smartcity';
 $user='root';
 $mdp='';
