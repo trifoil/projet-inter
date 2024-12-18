@@ -3,8 +3,8 @@ Projet inter 2024
 
 ## To-do list
 - [x] Création du GIT
-- [ ] Diagrammes de cas d'utilisation
-- [ ] Diagrammes de classe
+- [x] Diagrammes de cas d'utilisation
+- [x] Diagrammes de classe
 - [ ] Diagrammes de séquence
 - [x] Modélisation des BD
 - [x] Plan réseau
