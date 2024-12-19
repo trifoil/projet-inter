@@ -23,16 +23,16 @@
 
             <div class="status-section">
                 <div class="status-box">
-                    <p>🚗 There are currently <span>x</span> cars on the move.</p>
+                <p>🚦 Lights who are working properly: .</p>
                 </div>
                 <div class="status-box">
-                    <p>🚦 All lights are working properly.</p>
+                    <p>🚦 Lights who aren't working properly : .</p>
                 </div>
             </div>
 
             <div class="status-section">
                 <div class="status-box">
-                    <p>🚙 There are currently <span>x</span> cars parked.</p>
+                    <p>🚙 There are currently <?= $busy_place?> cars parked.</p>
                 </div>
                 <div class="status-box">
                    <a href="file_php/gestion.php"> <button class="add-carpark">Admin Page !</button></a>

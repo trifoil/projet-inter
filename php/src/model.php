@@ -93,3 +93,8 @@ function getNbrParking($s) {
         return "Aucune donnée trouvée.";
     }
 };
+
+function getOccupedPlaces(){
+    $occuped_place = getNbrPlaceTotal()-getNbrPlaceLibre();
+    return $occuped_place;
+}
