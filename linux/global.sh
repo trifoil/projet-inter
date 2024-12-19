@@ -27,7 +27,6 @@ pip3 install django
 
 # Create Django project
 django-admin startproject projinter
-cd
 
 # Install MariaDB development packages
 sudo dnf install mariadb-devel -y
@@ -103,7 +102,6 @@ echo "Updated ALLOWED_HOSTS in $SETTINGS_FILE"
 nohup python3 manage.py runserver 0.0.0.0:8000 &
 
 echo "Django development server is running at http://localhost:8000"
-
 
 
 
