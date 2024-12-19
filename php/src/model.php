@@ -41,8 +41,8 @@ function addParking($city, $places, $enable) {
     return $modifBD->execute();
 }
 function getCityOptions() {
-    global $bd; // Connexion à la base de données
-    $reqCat = $bd->prepare('SELECT * FROM city');
+    $database = getBdd();
+    $reqCat = $database->prepare('SELECT * FROM city');
     $reqCat->execute();
     $options = '';
 
@@ -56,12 +56,7 @@ function getCityOptions() {
 }
 function getNbrPlaceLibre() {
 	// We connect to the database.
-	try {
-    	$database = new PDO('mysql:host=localhost;dbname=transport_smartcity;charset=utf8', 'root', '');
-	} catch(Exception $e) {
-    	die('Erreur : '.$e->getMessage());
-	}
-    ;
+	$database = getBdd();
     $sql3 = "SELECT SUM(AvailablePlaces) AS total FROM Parking";
 
 	$result3 = $database->query($sql3);
@@ -75,12 +70,7 @@ function getNbrPlaceLibre() {
 };
 function getNbrPlaceTotal() {
 	// We connect to the database.
-	try {
-    	$database = new PDO('mysql:host=localhost;dbname=transport_smartcity;charset=utf8', 'root', '');
-	} catch(Exception $e) {
-    	die('Erreur : '.$e->getMessage());
-	}
-    ;
+	$database = getBdd();
     $sql3 = "SELECT SUM(TotalPlace) AS total FROM Parking";
 
 	$result3 = $database->query($sql3);
@@ -94,12 +84,7 @@ function getNbrPlaceTotal() {
 };
 function getNbrParking($s) {
 	// We connect to the database.
-	try {
-    	$database = new PDO('mysql:host=localhost;dbname=transport_smartcity;charset=utf8', 'root', '');
-	} catch(Exception $e) {
-    	die('Erreur : '.$e->getMessage());
-	}
-    ;
+	$database = getBdd();
     $result5 = $database->query("SELECT count(Location) AS nombre FROM Parking WHERE StateUp=$s");
     $row = $result5->fetch(PDO::FETCH_ASSOC); // Utilisation correcte de PDO
     if ($row) {
