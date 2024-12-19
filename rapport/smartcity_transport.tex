@@ -179,7 +179,11 @@ Chaque département est responsable de ses données locales et de leur synchroni
 \end{itemize}
 
 \subsection{Obstacles}
-Aucun obstacle signalé pour le moment.
+
+\begin{itemize}
+    \item plusieurs erreur sur le switch Alcatel et test fait sur le routeur physique (changement de cable, reboot) (Noah)
+    \item probleme global donc reunion pour mettre les maquettes en commun et ameliorer l'infra local
+\end{itemize}
 
 \subsection{Notes}
 \begin{itemize}
@@ -205,7 +209,7 @@ Aucun obstacle signalé pour le moment.
 \begin{itemize}
     \item Échange avec les experts, mise en place et apprentissage de Django, activation de l'infrastructure Django, création du dépôt GitHub commun de la Smartcity avec Kilian (Florian)
     \item Fin de la conception des layouts (Koryan)
-    \item Configuration des VLANs du switch, debug de la connectivité, configuration du site web HTML/CSS, construction de la DB sur phpMyAdmin, commencement de quelques requêtes PHP (Noah)
+    \item Configuration des Vlans du switch. Debug de la connectivite (Ping VLAN vers VLAN). Configuration du site web HTML/CSS a partir d'images faites par mon coequipier. Construction de la DB sur phpMyAdmin. Commencement de quelques requetes PHP(Noah)
 \end{itemize}
 
 \subsection{À Faire Demain}
@@ -215,10 +219,15 @@ Aucun obstacle signalé pour le moment.
     \item Effectuer des tests unitaires sur les fonctionnalités développées.
     \item Assurer le bon fonctionnement des serveurs et de la base de données.
     \item Tester la synchronisation des données entre l'application locale et la base de données centrale.
+    \item 
 \end{itemize}
 
 \subsection{Obstacles}
-Aucun obstacle signalé pour le moment.
+
+\begin{itemize}
+    \item Probleme sur le switch Alcatel car on avait oublier de changer la configuration de base vue qu'on avait evolue le reseaux global avec les nouvelles demande de Mr Pietrzak pour le nombre d'utilisateurs pour chaque domaine local donc changement d'ip et de masque qui n'etais plus correct dans les route du switch.
+    \item Ce premier probleme nous a cause des soucis dans notre ping dans notre VLAN 10, donc d'installation du serveur Windows local avec le global.
+\end{itemize}
 
 \subsection{Notes}
 \begin{itemize}
@@ -240,7 +249,7 @@ Aucun obstacle signalé pour le moment.
 
 \subsection{Fait Aujourd'hui}
 \begin{itemize}
-    \item
+    \item mise en place du serveux windows local configurer (Florian)
 \end{itemize}
 
 \subsection{À Faire Demain}
