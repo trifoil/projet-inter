@@ -23,10 +23,10 @@
 
             <div class="status-section">
                 <div class="status-box">
-                <p>🚦 Lights who are working properly: <?= $traffic_light_enable?>.</p>
+                    <p>🚦 Lights who are working properly: <?= $sum_enable?>.</p>
                 </div>
                 <div class="status-box">
-                    <p>🚦 Lights who aren't working properly : <?= $traffic_light_disable?>.</p>
+                    <p>🚦 Lights who aren't working properly : <?= $sum_disable?>.</p>
                 </div>
             </div>
 
@@ -43,29 +43,37 @@
             <div class="parking-section">
                 <h3>The different car parks in SmartCity Enable:</h3>
                 <ul>
-                <?php
-    	            foreach ($parking_enable as $pe) {
-    	        ?>
-                    <ul>
-                        <?php
-                            echo '<li>',$pe['Location'],' : ', $pe['AvailablePlaces'], ' places restantes sur ',$pe['TotalPlace'],'</li>';}
-                        ?>
-                    </ul>
-                    <h3>The different car parks in SmartCity Disable:</h3>
+                    <?php
+                        foreach ($parking_enable as $pe) {
+                                echo '<li>',$pe['Location'],' : ', $pe['AvailablePlaces'], ' places restantes sur ',$pe['TotalPlace'],'</li>';}
+                    ?>
+                </ul>
+                <h3>The different car parks in SmartCity Disable:</h3>
                 <ul>
-                <?php
-    	            foreach ($parking_disable as $pd) {
-    	        ?>
-        	    <div class="parking-section">
+                    <?php
+                        foreach ($parking_disable as $pd) {
+                            echo '<li>',$pd['Location'];}
+                    ?>
+                </ul>
+        	</div>
+            <div class="parking-section">
+                <h3>The different traffic light enable in SmartCity:</h3>
                     <ul>
                         <?php
-                            echo '<li>',$pd['Location'];}
+                            foreach ($traffic_light_enable as $tl_e) {
+                                    echo '<li>',$tl_e['Name'],' : ', $tl_e['Location'], ' waiting time : ',$tl_e['Affluence'],'min</li>';}
                         ?>
                     </ul>
-        	    </div>
+            </div>
+            <div class="parking-section">
+                <h3>The different light disable in SmartCity :</h3>
+                    <ul>
+                        <?php
+                            foreach ($traffic_light_disable as $tl_d) {
+                                    echo '<li>',$tl_d['Location'],$tl_d['Name'], 'waiting time x';}
+                        ?>
             </div>
         </div>
-    </div>
         <!-- Disconnect -->
         <div class="disconnect">
            <a href="/Loggin/login.html"> <p>USER X <span>🔌 Disconnect</span></p></a>
