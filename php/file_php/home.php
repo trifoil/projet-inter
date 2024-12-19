@@ -23,10 +23,10 @@
 
             <div class="status-section">
                 <div class="status-box">
-                <p>🚦 Lights who are working properly: .</p>
+                <p>🚦 Lights who are working properly: <?= $traffic_light_enable?>.</p>
                 </div>
                 <div class="status-box">
-                    <p>🚦 Lights who aren't working properly : .</p>
+                    <p>🚦 Lights who aren't working properly : <?= $traffic_light_disable?>.</p>
                 </div>
             </div>
 

@@ -97,4 +97,19 @@ function getNbrParking($s) {
 function getOccupedPlaces(){
     $occuped_place = getNbrPlaceTotal()-getNbrPlaceLibre();
     return $occuped_place;
-}
+};
+function getOccupedPlaces(){
+    $occuped_place = getNbrPlaceTotal()-getNbrPlaceLibre();
+    return $occuped_place;
+};
+function getNbrTrafficLight($s) {
+	// We connect to the database.
+	$database = getBdd();
+    $result5 = $database->query("SELECT count(IdTrafficLight) AS nombre FROM trafficlight WHERE StateUp=$s");
+    $row = $result5->fetch(PDO::FETCH_ASSOC); // Utilisation correcte de PDO
+    if ($row) {
+        return $row['nombre'];
+    } else {
+        return "Aucune donnée trouvée.";
+    }
+};
