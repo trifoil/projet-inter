@@ -48,7 +48,7 @@
     	        ?>
                     <ul>
                         <?php
-                            echo '<li>',$pe['Location'],' : ', $pe['AvailablePlaces'], ' places restantes sur ',$pe['TotalPlace'];}
+                            echo '<li>',$pe['Location'],' : ', $pe['AvailablePlaces'], ' places restantes sur ',$pe['TotalPlace'],'</li>';}
                         ?>
                     </ul>
                     <h3>The different car parks in SmartCity Disable:</h3>
