@@ -86,6 +86,7 @@ python3 projinter/manage.py migrate
 python3 projinter/manage.py createsuperuser
 
 sudo firewall-cmd --add-port=8000/tcp --permanent
+sudo firewall-cmd --add-port=3306/tcp --permanent
 sudo firewall-cmd --reload
 
 
@@ -99,7 +100,7 @@ echo "Updated ALLOWED_HOSTS in $SETTINGS_FILE"
 
 
 # Run the development server (sent to background)
-nohup python3 projinter/manage.py runserver 0.0.0.0:8000 &
+# nohup python3 projinter/manage.py runserver 0.0.0.0:8000 &
 
 echo "Django development server is running at http://localhost:8000"
 
