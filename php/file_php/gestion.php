@@ -1,8 +1,5 @@
-<?php
- // Connexion à la base de données
-include 'loginbd.php';
+<?php 
 include '../src/model.php'; // Inclusion du fichier contenant la fonction
-
 if (isset($_POST['connexion'])) {
     // Données sécurisées
     $city = $_POST['City'] . ' ' . $_POST['Street'];
@@ -11,7 +8,7 @@ if (isset($_POST['connexion'])) {
 
     // Appel de la fonction addParking
     if (addParking($city, $places, $enable)) {
-        header('Location: ../index.php');
+        header('Location: home.php');
         exit();
     } else {
         echo "Erreur lors de l'ajout du parking.";
@@ -25,7 +22,7 @@ if (isset($_POST['update_park'])) {
     $enable = (int)$_POST['enable'];
 
     if (updateParking($id, $a_places,$t_places, $enable)) {
-        header('Location: ../index.php');
+        header('Location: home.php');
         exit();
     } else {
         echo "Erreur lors de la màj du parking.";
@@ -53,9 +50,11 @@ if (isset($_POST['update_park'])) {
                 <h1>Admin page !</h1>
                 <p>Two clicks and you're done!</p>
             </div>
+            <h2>About parking</h2>
             <div class="manage">
                     <div class="modification">
                         <form class="carpark-form" method="POST" action="gestion.php">
+                            <legend>Add a park</legend>
                             <select name="City">
                             <?php
                                 echo getCityOptions(); //probleme de porter de variable appel direct de la fonction 
@@ -88,8 +87,6 @@ if (isset($_POST['update_park'])) {
                             <li>Disable parking : <?php echo getNbrParking(0)?></li><br>
                         </ul>
                     </div>
-            </div>
-        <div class="manage">
                     <div class="modification">
                         <form class="carpark-form" method="POST" action="gestion.php">
                             <legend>Update your parking</legend>
@@ -124,7 +121,7 @@ if (isset($_POST['update_park'])) {
 </body>
 <footer>
         <div class="home-btn">
-            <a href="../index.php">🏠
+            <a href="home.php">🏠
         </div>
 </footer>
 </html>

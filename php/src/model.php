@@ -161,3 +161,42 @@ function updateParking($id, $a_places, $t_places, $enable) {
         // Exécution de la requête
         return $query->execute();
 };
+function connect_to_ldap($username, $password) {
+    // Paramètres de connexion à ADDS
+    $ldapHost = 'ldap://192.168.100.2'; // URL de ton serveur LDAP
+    $ldapPort = 389; // Port LDAP par défaut
+    $ldapBaseDn = 'DC=smartcity,DC=lan';
+
+    // Connexion à ADDS
+    $ldap = ldap_connect($ldapHost, $ldapPort);
+    if (!$ldap) {
+        return false;
+    }
+    ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+    ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+
+    // Authentification sur ADDS
+    $bind = ldap_bind($ldap, $username . "@smartcity.lan", $password);
+    if (!$bind) {
+        return false;
+    }
+
+    // Retourne la connexion à ADDS
+    return $ldap;
+};
+
+// Fonction pour récupérer le DN de l'utilisateur
+function get_user_dn($ldap, $username) {
+    $filter = "(sAMAccountName=$username)";
+    $result = ldap_search($ldap, "DC=smartcity,DC=lan", $filter, array("dn"));
+    $entries = ldap_get_entries($ldap, $result);
+    return ($entries["count"] > 0) ? $entries[0]["dn"] : null;
+};
+
+// Fonction pour vérifier si l'utilisateur fait partie du groupe
+function check_user_group($ldap, $userDN, $group) {
+    $filter = "(member=CN=$group,OU=GG,OU=Groups,DC=smartcity,DC=lan)";
+    $result = ldap_search($ldap, $userDN, $filter, array("dn"));
+    $entries = ldap_get_entries($ldap, $result);
+    return ($entries["count"] > 0);
+};
