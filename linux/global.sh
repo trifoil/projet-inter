@@ -26,7 +26,7 @@ sudo dnf install python3 python3-pip -y
 pip3 install django
 
 # Create Django project
-django-admin startproject
+django-admin startproject projinter
 cd
 
 # Install MariaDB development packages
