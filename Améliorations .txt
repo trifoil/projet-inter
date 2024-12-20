@@ -1,0 +1,30 @@
+Améliorations Proposées pour notre Semaine de Projet
+
+    Renforcer la Communication et l'Échange d'Idées
+
+        Importance de la Discussion :
+            En tant qu'étudiants, il est crucial que nous tirions parti de notre diversité d'idées et de perspectives. Pour cela, nous devrions organiser des sessions de discussion régulières tout au long de la semaine de projet. Ces échanges nous permettront de partager nos avancées, de poser des questions et de résoudre ensemble les problèmes qui pourraient survenir.
+
+        Utilisation d'Outils Collaboratifs :
+            Nous pourrions également utiliser des outils numériques comme des plateformes de messagerie ou des tableaux de bord collaboratifs pour centraliser nos idées et nos retours. Cela facilitera la communication et nous aidera à rester alignés sur nos objectifs communs.
+
+    Ajout d'une Simulation de Fluctuation de Données
+
+        Rendre notre Application Plus Dynamique :
+            Pour améliorer notre application web, nous proposons d'intégrer une simulation de fluctuation de données. Cette fonctionnalité nous permettra de modéliser comment les données peuvent varier en fonction de différents scénarios, comme les pics de trafic, les événements spéciaux ou les conditions météorologiques.
+
+        Impact sur la Gestion des Ressources :
+            En simulant ces fluctuations, nous pourrons mieux anticiper les besoins en gestion des transports et optimiser l'allocation des ressources. Cela nous donnera également une meilleure compréhension des défis auxquels une ville intelligente pourrait faire face.
+
+    Évaluation des Coûts du Projet
+
+        Établir un Budget Prévisionnel :
+
+            Pour assurer la viabilité de notre projet, il est essentiel d'avoir une idée claire des coûts associés. Voici quelques éléments que nous devrions prendre en compte :
+                Prix des Switches : Évaluer le coût des équipements réseau nécessaires pour garantir une connectivité efficace entre les différents départements.
+                Prix de Windows Server : Inclure les frais de licence pour le système d'exploitation serveur, qui est crucial pour l'hébergement de nos applications.
+                Prix de Linux : Considérer les options open-source, qui peuvent réduire les coûts tout en offrant une robustesse et une sécurité élevées.
+                Prix du Matériel : Évaluer le coût des serveurs, des routeurs et d'autres équipements nécessaires pour déployer notre infrastructure.
+
+        Discussion des Coûts :
+            Organiser des sessions de brainstorming pour discuter de ces coûts et établir un budget réaliste. Cela nous aidera à mieux gérer nos ressources et à éviter les imprévus financiers. En ayant une vision claire des coûts, nous pourrons également justifier nos choix techniques et stratégiques auprès de nos enseignants.
