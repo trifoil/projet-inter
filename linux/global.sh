@@ -86,6 +86,8 @@ python3 projinter/manage.py migrate
 python3 projinter/manage.py createsuperuser
 
 sudo firewall-cmd --add-port=8000/tcp --permanent
+sudo firewall-cmd --add-port=8001/tcp --permanent
+
 sudo firewall-cmd --add-port=3306/tcp --permanent
 sudo firewall-cmd --reload
 
