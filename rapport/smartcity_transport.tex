@@ -31,21 +31,18 @@
 Ce rapport présente le projet interdisciplinaire réalisé dans le cadre du Bachelier en Informatique, orientation réseaux \& télécommunications, bloc 2. Le projet vise à simuler la gestion d'une ville intelligente en intégrant des aspects d'infrastructure réseau, de développement web, et de gestion collaborative.
 
 \chapter{Description du Projet}
-Le projet interdisciplinaire a pour objectif de vous immerger dans une simulation professionnelle qui allie infrastructure réseau, systèmes informatiques, bases de données, développement web, et gestion collaborative. Chaque groupe représentera une entité indépendante (par exemple, un hôpital) avec des responsabilités propres, tout en collaborant avec les autres pour contribuer à un système centralisé interconnecté.
+Le projet interdisciplinaire a pour objectif de nous immerger dans une simulation professionnelle qui allie infrastructure réseau, systèmes informatiques, bases de données, développement web, et gestion collaborative. Chaque groupe représente une entité indépendante (par exemple, une ville connectée dans notre cas) avec des responsabilités propres, tout en collaborant avec les autres pour contribuer à un système centralisé interconnecté.
 
 \section{Comportement}
-Durant cette semaine de projet, vous devrez faire preuve de professionnalisme. Et donc trouver une méthodologie de travail de groupe adéquate, une cohésion, un échange professionnel entre vous et les professeurs servant d'expert ou ceux servant de client. L'interprétation des informations sera différente selon l'un et l'autre. Il sera donc important d'employer un vocabulaire adéquat en fonction.
+Durant cette semaine de projet, nous avons dû faire preuve de professionnalisme. Et donc trouver une méthodologie de travail de groupe adéquate, une cohésion, un échange professionnel entre nous et les professeurs servant d'expert ou ceux servant de client. Il est donc important d'employer un vocabulaire adéquat en fonction de notre interlocuteur.
 
 \section{Groupe}
 L'élaboration du projet se fera comme convenu au départ par groupe de 5 étudiants maximum. Chaque groupe devra comporter plusieurs profils tel que :
 \begin{itemize}
-    \item 1 Chef d'équipe : Il sera la personne ressource pour le client et sera donc l'UNIQUE référent pour celui-ci.
-    \item 2 développeurs : Ces personnes auront une spécificité beaucoup plus orienté développement.
-    \item 2 gestionnaires réseau : Ces personnes auront plusieurs missions d'aider les développeurs en testant le code et de gérer l'infrastructure réseau.
+    \item 1 Chef d'équipe (Florian Olivier) : Il sera la personne ressource pour le client et sera donc l'UNIQUE référent pour celui-ci. 
+    \item 2 développeurs (Matteo Di Letto, Noah Debay) 
+    \item 2 gestionnaires réseau (Augustin Vangeebergen,Koryan De Coster) 
 \end{itemize}
-
-\section{Autonomie}
-Durant cette semaine de projet, vous devrez faire preuve d'autonomie, ce critère entrera dans votre évaluation.
 
 \section{Évaluation}
 L'évaluation sera réalisée à différents niveaux :
@@ -58,14 +55,14 @@ L'évaluation sera réalisée à différents niveaux :
 \end{itemize}
 
 \chapter{Objectifs Généraux}
-Le projet vise à développer une simulation de gestion pour une ville intelligente. Chaque groupe représentera un département crucial (transport, énergie, sécurité, eau) et sera responsable de gérer les données locales tout en contribuant à une base centrale pour fournir des services partagés et un tableau de bord global.
+Le projet vise à développer une simulation de gestion pour une ville intelligente. Chaque groupe représente un département crucial (transport, énergie, sécurité, eau) et est responsable de gérer les données locales tout en contribuant à une base centrale pour fournir des services partagés et un tableau de bord global (en Django).
 
 \chapter{Infrastructure Réseau \& Systèmes}
 \section{Configuration Réseau}
 Chaque classe disposera d'un switch configuré avec les VLAN suivants :
 \begin{itemize}
     \item VLAN 10, 20, 30, 40 : Attribués aux groupes 1 à 4.
-    \item VLAN 100 : VLAN commun regroupant les services partagés.
+    \item VLAN 100 : VLAN commun regroupant les services partagés communs.
 \end{itemize}
 
 \section{Serveurs}
@@ -77,42 +74,85 @@ Chaque groupe disposera de serveurs locaux et collaborera avec un serveur commun
     \item Serveur Linux Commun (VLAN 100)
 \end{itemize}
 
+La configuration est en annexe.
+
 \chapter{Développement des Applications}
 \section{Applications Locales (PHP)}
-Chaque groupe doit développer une interface CRUD pour gérer les données locales et assurer la synchronisation de certaines données locales avec la base de données centrale.
+
+Pour Matteo
 
 \section{Applications Globales (Python ou PHP)}
-Cette application doit consolider les données, gérer les alertes, fournir un tableau de bord général, et assurer la sécurité des données.
+
+L'application globale devait être impléméntée en Python, avec le framework Django. Malheureusement, à cause de notre retard et d'une mauvaise coordination, celui-ci n'a pas été réalisé. La maquette est cependant dsponible en annexe.
 
 \section{Bonnes Pratiques}
-Cette application doit répondre aux normes de bonnes pratiques vues en cours, être documentée, sécurisée, et ergonomique.
+Ces applications doivent répondre aux normes de bonnes pratiques vues en cours, être documentée, sécurisée, et ergonomique.
 
 \chapter{Analyse}
-Chaque groupe doit produire les diagrammes UML suivants :
+Production des diagrammes UML :
 \begin{itemize}
-    \item Diagrammes de cas d'utilisation.
-    \item Diagrammes de classes.
-    \item Diagrammes de séquence.
+    \item Diagrammes de cas d'utilisation. Voir annexe
+    \item Diagrammes de classes. Voir annexe
+    \item Diagrammes de séquence. Non fait
+    \item Diagramme MLD. Voir annexe
 \end{itemize}
 
 \chapter{Notions de Sécurité de l'AD et Journalisation de la Base de Données}
 \section{Authentification}
-Tous les utilisateurs doivent s'authentifier via l'Active Directory (local ou central) avant d'accéder aux applications.
+Authentification des utilisateurs via l'Active Directory (local ou central) avant d'accéder aux applications.
 
 \section{Contrôle d'Accès}
 Permissions basées sur les groupes AD. Validation des actions critiques selon le rôle défini dans AD.
 
 \section{Traçabilité}
+A a méliorer : 
 Journaux de connexion enregistrés sur le serveur AD pour chaque utilisateur. Suivi des modifications dans les bases de données via triggers.
 
 \chapter{Documentation Technique}
-Chaque groupe doit livrer une documentation complète comprenant :
+Ddocumentation complète comprenant :
 \begin{itemize}
     \item Plans réseau.
     \item Maquettes.
     \item Scripts de configuration.
     \item Rapports de tests.
 \end{itemize}
+
+\section{Explications du Linux local}
+
+La machine Linux local est un fedora server 40. 
+Cette distribution est pratique car elle inclut plus de packages qu'Alma Linux.
+Une installation comprenant :
+
+\begin{itemize}
+\item httpd
+\item PHP
+\item PHPyadmin
+\item File Browser
+\item Partage Samba
+\item MAriaDB
+\end{itemize}
+
+Niveau sécurité, on a :
+\begin{itemize}
+\item Mots de passe utilisateurs forts 
+\item Firewall
+\item SELinux
+\item options de montage 
+\end{itemize}
+
+Backups : 
+
+Sauvegarde journalière avec rsync : DB et site.
+
+Sauvegarde avant les mises à jour (avec alias pour sauvegarder puis mettre à jour).
+
+\section{Explications du Linux Global}
+
+Idem que pour le linux local.
+
+\section{Explications du code}
+
+Matteo
 
 \chapter{Planning Suggéré}
 \section{Jour 1 : Analyse et Planification}
