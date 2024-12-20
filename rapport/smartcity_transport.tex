@@ -79,7 +79,28 @@ La configuration est en annexe.
 \chapter{Développement des Applications}
 \section{Applications Locales (PHP)}
 
-Pour Matteo
+
+Le fonctionnement du site web repose sur une ébauche d'architecture MVC.
+Le principe est d’isoler le code.
+Le fichier index.php joue le rôle de contrôleur, le fichier model.php regroupe toutes les fonctions et les futures classes, et le répertoire templates contient toutes les pages du site.
+
+Suite à des problèmes techniques, les pages web accèdent directement au fichier model.php afin d'utiliser ses fonctions. Cela évite les problèmes de portée. Cependant, à terme, les pages devront se contenter d’afficher les variables calculées dans le fichier index.php.
+
+Fonctions disponibles :
+\item getBdd() : Cette fonction établit la connexion à la base de données pour éviter la redondance dans le code.
+\item getParking($n) : Permet d'obtenir les parkings en fonction de leur état grâce à des paramètres.
+\item getTrafficLight() : Fonction similaire à getParking, mais appliquée aux feux rouges. Une redondance aurait pu être évitée en créant une fonction générique getEnabled($n) avec $n comme entité à rechercher.
+\item addParking($city, $places, $enable) : Ajoute un parking à la base de données. Cependant, des erreurs évidentes sont présentes, notamment l'absence de filtres sur les données entrantes. La fonction se contente d’une assignation directe pour préparer la requête.
+\item addTrafficLight($city, $name, $time, $enable) : Fonction similaire à addParking, avec les mêmes problèmes de redondance et de sécurité que précédemment.
+\item getCityOptions() : Récupère les villes disponibles. Cette fonction pourrait être utilisée comme liste blanche pour éviter les modifications dans le code HTML.
+\item getNbrPlaceLibre() : Récupère le nombre de places libres. Le nom de la fonction devrait être adapté pour respecter la convention de nommage en anglais.
+\item getNbrPlaceTotal() : Fonction similaire à getNbrPlaceLibre(), avec les mêmes remarques concernant le nommage.
+\item getNbrParking($s) : Récupère le nombre total de parkings.
+\item getNbrTrafficLight($) : Fonction similaire à getNbrParking. Une redondance pourrait être évitée en regroupant les données par type selon un paramètre.
+\item updateParking($id, $a_places, $t_places, $enable) : Permet aux utilisateurs de modifier les informations des parkings. Cependant, la sécurité des données entrantes (balises HTML, injections XML, logique des données) doit être renforcée.
+\item login() : Une fonction composée de plusieurs sous-fonctions pour vérifier les données utilisateur et permettre l'accès aux utilisateurs autorisés.
+\section{Conclusion} :
+Le code est fonctionnel mais présente de nombreuses lacunes, notamment en termes de sécurité et d’optimisation. Les problématiques de redondance, de filtrage des données, et de conventions de nommage doivent être adressées pour améliorer la qualité globale.
 
 \section{Applications Globales (Python ou PHP)}
 
