@@ -1,0 +1,125 @@
+composant: 
+
+4 cables Reseaux (RJ45)
+Windows Serveur 2019
+Fedora version 40
+
+VLAN 10 (Transport)
+
+- Description : Ce VLAN est dédié aux opérations du service Transport, isolant le trafic pour garantir la sécurité et l'efficacité.
+
+- Composants :
+
+- Switch Configuré : Permet la communication entre les appareils du VLAN tout en maintenant l'isolation des autres VLANs. 
+
+- Routage : Activé pour permettre la communication avec le VLAN commun (VLAN 100) pour l'accès aux services partagés.
+
+- Reference materiel : Switch: Alcatel OS6350-24
+
+2. Serveurs
+
+- Serveur Windows 2019
+
+- Rôles :
+
+- DHCP : Fournit des adresses IP aux appareils connectés au VLAN 10, assurant une gestion dynamique des adresses. Permet aussi de d'exclure les adresse utilisé pour les capteur en adressage fixe
+
+- DNS : Résout les noms de domaine spécifiques au service Transport, facilitant l'accès aux ressources internes. 
+
+- Active Directory (AD DS) :Nous n'en n'avons pas en local mais nous somme en delegation de l'AD global
+
+Serveur Linux
+
+- Rôle :
+
+- Hébergement Web : Utilisé pour afficher le site internet du service Transport, avec une configuration SSL pour sécuriser les communications.
+
+- Base de Données : Stocke les données relatives aux véhicules, parkings, routes, capteurs et feux rouges.
+
+3. Base de Données
+
+- Structure :
+
+- Tables :
+
+- city : Contient des informations sur la ville (IdCity, name).
+
+- parking : Détails sur les parkings (IdParking, AvailablePlaces, TotalPlace, StateUp, Location).
+
+- sensorparking : Données des capteurs (IdSensor, Location, StateUp, DateMaj).
+
+- trafficlight : Statut et emplacement des feux rouges (IdTrafficLight, StateUp, Affluence).
+
+4. Sécurité
+
+- Gestion des Utilisateurs :
+
+- Utilisation d'Active Directory pour gérer les permissions et l'accès des utilisateurs au sein du service Transport.
+
+- Certificat SSL :
+
+- Mise en place d'un certificat SSL sur le serveur Linux pour sécuriser les communications entre le serveur et les utilisateurs, garantissant la confidentialité des données échangées.
+
+5. Développement de l'Application Web
+
+1. Framework Utilisé
+
+- PHP : Utilisé pour le développement de l'application web, permettant une gestion dynamique des données.
+
+- Base de Données :
+
+- MySQL/MariaDB : Système de gestion de base de données relationnelle pour stocker et gérer les données du service Transport.
+
+- Serveur Web :
+
+- Httpd (Apache) : Serveur web utilisé pour héberger l'application, permettant de servir les pages web aux utilisateurs.
+
+- Outil de Gestion de Base de Données :
+
+- PhpMyAdmin : Interface web pour gérer facilement les bases de données MySQL/MariaDB, facilitant les opérations CRUD.
+
+2. Page d'Accueil
+
+- Accès Initial :
+
+- Lorsqu'un utilisateur accède à l'application web, il est accueilli par une page d'accueil conviviale. Cette page présente une brève introduction au service Transport, ainsi que des informations sur les fonctionnalités disponibles.
+
+- Navigation :
+
+- La page d'accueil comprend des liens vers des sections importantes de l'application, comme la gestion des données de transport, les alertes, et les rapports. Cependant, l'accès à ces sections est restreint aux utilisateurs authentifiés.
+
+3. Processus de Connexion
+
+- Formulaire de Connexion :
+
+- Pour accéder aux données, l'utilisateur doit se connecter via un formulaire de connexion accessible depuis la page d'accueil. Ce formulaire demande les informations d'identification de l'utilisateur, telles que le nom d'utilisateur et le mot de passe.
+
+- Authentification :
+
+- Lors de la soumission du formulaire, les informations d'identification sont vérifiées par rapport à la base de données. Si les informations sont correctes, l'utilisateur est authentifié et redirigé vers le tableau de bord de l'application.
+
+- Gestion des Sessions :
+
+- Une fois connecté, une session est créée pour l'utilisateur, lui permettant d'accéder aux fonctionnalités de l'application sans avoir à se reconnecter à chaque action.
+
+4. Accès aux Données
+
+- Tableau de Bord :
+
+- Après la connexion, l'utilisateur est dirigé vers un tableau de bord qui affiche les données pertinentes du service Transport, telles que :
+
+- La disponibilité des parkings.
+
+- Les alertes de trafic en temps réel.
+
+- Les statistiques sur les véhicules et les capteurs.
+
+- Fonctionnalités de Gestion :
+
+- L'utilisateur peut interagir avec les données via des fonctionnalités CRUD (Créer, Lire, Mettre à jour, Supprimer) pour gérer les informations relatives aux véhicules, aux capteurs, et aux alertes.
+
+5. Déconnexion
+
+- Sécurité :
+
+- L'utilisateur a la possibilité de se déconnecter à tout moment, ce qui termine la session et garantit que les données restent sécurisées.
