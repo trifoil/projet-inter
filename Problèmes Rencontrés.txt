@@ -1,0 +1,17 @@
+Problèmes Rencontrés
+
+    Mathéo : Arborescence MVC
+        Problème : Difficulté à structurer l'arborescence du modèle MVC (Model-View-Controller).
+        Solution : Revoir les principes de base du MVC et utiliser des exemples de projets bien structurés pour s'inspirer.
+
+    Ports 8000 et 8080 sur Linux
+        Problème : Les ports 8000 et 8080 sur le serveur Linux global ont planté car ils étaient utilisés par d'autres applications, ce qui a bloqué l'avancement global. De plus, un câble débranché a causé des problèmes physiques.
+        Solution : Vérifier régulièrement l'utilisation des ports et s'assurer qu'ils ne sont pas partagés. Pour les problèmes de câblage, effectuer des contrôles physiques fréquents pour éviter les déconnexions.
+
+    Noah : Problème de Switch
+        Problème : Lors de la première réunion, nous avions choisi des plages différentes pour chaque VLAN. Après la demande de M. Pietrzak, nous avons reçu le nombre d'employés à connecter, ce qui a causé des erreurs car les routes avaient été configurées selon les décisions de la première réunion. Cela a bloqué l'infrastructure pendant 1,5 jours.
+        Solution : Reconfigurer les routes en fonction des nouvelles informations et s'assurer que les configurations sont flexibles pour s'adapter aux changements futurs.
+
+    Florian : Problème avec Windows Server Local
+        Problème : Problème de connexion avec le domaine après plusieurs déconnexions et réinstallations de la VM. Finalement, j'ai réussi à lier le serveur et à effectuer un nslookup, ce qui a permis de faire avancer le serveur Windows local.
+        Solution : Documenter les étapes de configuration et de dépannage pour éviter les mêmes problèmes à l'avenir. Utiliser des snapshots de VM pour revenir rapidement à un état fonctionnel en cas de problème.
