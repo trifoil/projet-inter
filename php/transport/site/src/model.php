@@ -174,24 +174,3 @@ function updateParking($id, $a_places, $t_places, $enable) {
         // Exécution de la requête
         return $query->execute();
 };
-function updateParkingPlace(){
-     // Connexion à la base de données
-	 $database = getBdd();
-
-	 // Préparation de la requête
-	 $query = $database->prepare(
-		 'UPDATE parking
-		 SET AvailablePlaces = :a_places,
-		 WHERE IdParking = :IdParking'
-	 );
-
-	 // Liaison des valeurs
-	 $query->bindValue(':a_places', $a_places, PDO::PARAM_INT);
-	 $query->bindValue(':t_places', $t_places, PDO::PARAM_INT);
-	 $query->bindValue(':enable', $enable, PDO::PARAM_INT);
-	 $query->bindValue(':IdParking', $id, PDO::PARAM_INT);
-
-	 // Exécution de la requête
-	 return $query->execute();
-
-}

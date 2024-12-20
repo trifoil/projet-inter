@@ -1,7 +1,7 @@
 <?php 
 include '../src/model.php'; // Inclusion du fichier contenant la fonction
 if (isset($_POST['update_data_park'])) {
-    updateParkingPlace();
+  echo 'button';
 }
 if (isset($_POST['connexion'])) {
     // Données sécurisées
@@ -206,7 +206,7 @@ if (isset($_POST['add_traffic_light'])) {
 </body>
 <footer>
         <div class="home-btn">
-            <a href="home.php">🏠
+            <a href="../index.php">🏠
         </div>
 </footer>
 </html>
