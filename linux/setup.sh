@@ -118,3 +118,13 @@ echo "Setup complete."
 
 # Clean up
 sudo rm /var/www/html/info.php
+sudo dns install php-ldap
+
+sudo setsebool -P httpd_can_connect_ldap on
+sestatus
+sudo setsebool -P httpd_can_connect_ldap on
+sudo firewall-cmd --add-port=389/tcp --permanent
+sudo firewall-cmd --add-port=389/udp --permanent
+php -m | grep ldap
+#si ça affiche "ldap"
+#c'est qu'il est enable
