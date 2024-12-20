@@ -1,0 +1,89 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+    height: 100vh; /* Hauteur complète */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+}
+
+.sidebar h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+}
+.parking_manage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+}
+/* Formulaire d'ajout de parking */
+.carpark-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.carpark-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+.carpark-form select,
+.carpark-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.carpark-form input:focus,
+.carpark-form select:focus {
+    border-color: #4CAF50;
+}
+
+.confirm-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.confirm-btn:hover {
+    background-color: #45a049;
+}
